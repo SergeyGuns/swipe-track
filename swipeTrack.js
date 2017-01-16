@@ -17,6 +17,7 @@ var SWIPE_INIT = (LEFT=()=>console.log('left'), RIGHT=()=>console.log('right'), 
   el.addEventListener('touchmove', handleTouchMove, false);
   el.addEventListener('touchend', handleTouchEnd, false);     
 
+  //class elem block swipe(классы свайп на которых не сработает)
   const SWIPE_BLOCK_ELEMS = [
     'swipBlock',
     'handle',
@@ -28,6 +29,7 @@ var SWIPE_INIT = (LEFT=()=>console.log('left'), RIGHT=()=>console.log('right'), 
   let xDiff = null;
   let yDiff = null;
   let timeDown = null;
+  //filter parametrs time and gesture swipe( фильстрации случайных движений по длине и времени )
   const  TIME_TRASHOLD = 200;
   const  DIFF_TRASHOLD = 130;
 
