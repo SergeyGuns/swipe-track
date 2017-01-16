@@ -1,7 +1,7 @@
 
 
 //SWIPE TRACK
-var SWIPE_INIT = (LEFT, RIGHT)=> {
+var SWIPE_INIT = (LEFT=()=>console.log('left'), RIGHT=()=>console.log('right'), el=document)=> {
 
   function SWIPE_LEFT (cb) {
     if(cb)
@@ -13,9 +13,9 @@ var SWIPE_INIT = (LEFT, RIGHT)=> {
       cb()
   }
 
-  document.addEventListener('touchstart', handleTouchStart, false);
-  document.addEventListener('touchmove', handleTouchMove, false);
-  document.addEventListener('touchend', handleTouchEnd, false);     
+  el.addEventListener('touchstart', handleTouchStart, false);
+  el.addEventListener('touchmove', handleTouchMove, false);
+  el.addEventListener('touchend', handleTouchEnd, false);     
 
   const SWIPE_BLOCK_ELEMS = [
     'swipBlock',
