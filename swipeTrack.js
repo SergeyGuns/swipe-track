@@ -102,3 +102,36 @@ var SWIPE_INIT = (LEFT=()=>console.log('left'), RIGHT=()=>console.log('right'), 
 
 //SWIPE TRACK END
 export default SWIPE_INIT
+
+
+class SwipeTrack {
+  constructor(options) {
+    this.__left                = options.left || this.__debug ? console.log('left') : null    //func
+    this.__right               = options.right || this.__debug ? console.log('right') : null  //func
+    this.__up                  = options.up || this.__debug ? console.log('up') : null        //func
+    this.__down                = options.down || this.__debug ? console.log('down') : null    //func
+    this.__element        = options.element || document                             //htmlNode
+    this.__swipeBlockClassName = options.swipeBlockClassName || ''                            // array ['block' , swipeBlock]
+    this.__debug               = options.debug || false                                       // bool
+    this.__xDown = null;
+    this.__yDown = null; 
+    this.__xDiff = null;
+    this.__yDiff = null;
+    this.__timeDown = null;
+    //filter parametrs time and gesture swipe( фильстрации случайных движений по длине и времени )
+    this.__TIME_TRASHOLD = 200;
+    this.__DIFF_TRASHOLD = 130;
+  }
+
+  addEvents() {
+    this.__trackElement.addEventListener('touchstart', handleTouchStart, false);
+    this.__trackElement.addEventListener('touchmove', handleTouchMove, false);
+    this.__trackElement.addEventListener('touchend', handleTouchEnd, false);    
+  }
+  removeEvents() {
+    this.__trackElement.removeEventListener('touchstart', handleTouchStart, false);
+    this.__trackElement.removeEventListener('touchmove', handleTouchMove, false);
+    this.__trackElement.removeEventListener('touchend', handleTouchEnd, false);   
+  }
+
+}
