@@ -1,31 +1,33 @@
 class SwipeTrack {
   constructor(options = {}) {
-    console.log(options.left)
     this.__debug               = options.debug || false                 // bool
     this.__leftSwipe           = options.left || console.log('left')    //func
     this.__rightSwipe          = options.right || console.log('right')  //func
     this.__upSwipe             = options.up || console.log('up')        //func
     this.__downSwipe           = options.down || console.log('down')    //func
     this.__trackElement        = options.element || document            //htmlNode
-    this.__swipeBlockClassName = options.swipeBlockClassName || 'block' // array ['block' , swipeBlock]
-    this.__xDown = null;
-    this.__yDown = null;
-    this.__xDiff = null;
-    this.__yDiff = null;
-    this.__timeDown = null;
+    this.__swipeBlockClassName = options.swipeBlockers || 'swipe__block' // array ['block' , swipeBlock]
+    this.__blockBy             = options.blockBy || 'exact' // or 'closest'
+    this.__xDown               = null;
+    this.__yDown               = null;
+    this.__xDiff               = null;
+    this.__yDiff               = null;
+    this.__timeDown            = null;
     //filter parametrs time and gesture swipe( фильстрации случайных движений по длине и времени )
-    this.__TIME_TRASHOLD = 200;
-    this.__DIFF_TRASHOLD = 130;
+    this.__TIME_TRASHOLD       = 200;
+    this.__DIFF_TRASHOLD       = 130;
     this.addEvents()
   }
 
 
 
   containsClassName(evntarget, classArr) {
-    for (var i = classArr.length - 1; i >= 0; i--) {
-      if (evntarget.classList.contains(classArr[i])) {
-        return true;
-      }
+    if (this.__blockBy == 'exact'){
+      return classArr.some(className => evntarget.classList.contains(className))
+    } else if (this.__blockBy == 'closest'){
+      return classArr.some(className => evntarget.closest('.' + className) != null)
+    } else {
+      return false;
     }
   }
 
