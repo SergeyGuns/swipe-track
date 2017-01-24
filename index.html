@@ -1,27 +1,38 @@
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset='UTF-8'>
   <title>swipeTracker</title>
+<style>
+  body {font-family: monospace;font-size: 50px;}
+</style>
 </head>
 <body>
 
 <div id='text'></div> 
 
-<script type="text/javascript" src="./swipeTrack.js" ></script>
-<script type="text/javascript">
+<script type='text/javascript' src='./swipeTrack.js' ></script>
+<script type='text/javascript'>
   
 let text = window.text
 
 function handleLeft() {
-  text.innerHTML = '=>'
+  text.innerHTML = '<='
 }
 function handleRight () {
-  text.innerHTML = '<='
+  text.innerHTML = '=>'
+}
+function handleUp() {
+  text.innerHTML = '^'
+}
+function handleDown() {
+  text.innerHTML = 'v'
 }
 
 const OPTIONS = {
-  "left": handleLeft,
-  "right": handleRight
+  'left': handleLeft,
+  'right': handleRight,
+  'up': handleUp,
+  'down': handleDown
 }
 
 const swipeTrack = new SwipeTrack(OPTIONS)
