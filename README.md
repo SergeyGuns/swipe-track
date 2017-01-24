@@ -1,14 +1,29 @@
 ```js
 	//how use
-import SWIPE_INIT from './swipeTrack.js'
-function SWIPE_LEFT () {
-  navigation.left()
+
+let text = window.text
+function handleLeft() {
+  text.innerHTML = '=>'
+}
+function handleRight () {
+  text.innerHTML = '<='
 }
 
-function SWIPE_RIGHT () {
-  navigation.right()
+
+
+
+const OPTIONS = {
+  "left": handleLeft,
+  "right": handleRight
 }
 
-//arg1 = func,arg2 = func, arg3 = htmlNode
-SWIPE_INIT(SWIPE_LEFT, SWIPE_RIGHT, document)
+const swipeTrack = new SwipeTrack(OPTIONS)
+
+or 
+
+const swipeTrack = new SwipeTrack({
+  "left": handleLeft,
+  "right": handleRight,
+  
+})
 ```

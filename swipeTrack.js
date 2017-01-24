@@ -1,17 +1,15 @@
-
-
 class SwipeTrack {
   constructor(options = {}) {
     console.log(options.left)
-    this.__debug               = options.debug   || false                                    // bool
-    this.__leftSwipe           = options.left    || console.log('left') //func
-    this.__rightSwipe          = options.right   || console.log('right')//func
-    this.__upSwipe             = options.up      || console.log('up')         //func
-    this.__downSwipe           = options.down    || console.log('down')     //func
-    this.__trackElement        = options.element || document                                  //htmlNode
-    this.__swipeBlockClassName = options.swipeBlockClassName || 'block'                            // array ['block' , swipeBlock]
+    this.__debug               = options.debug || false                 // bool
+    this.__leftSwipe           = options.left || console.log('left')    //func
+    this.__rightSwipe          = options.right || console.log('right')  //func
+    this.__upSwipe             = options.up || console.log('up')        //func
+    this.__downSwipe           = options.down || console.log('down')    //func
+    this.__trackElement        = options.element || document            //htmlNode
+    this.__swipeBlockClassName = options.swipeBlockClassName || 'block' // array ['block' , swipeBlock]
     this.__xDown = null;
-    this.__yDown = null; 
+    this.__yDown = null;
     this.__xDiff = null;
     this.__yDiff = null;
     this.__timeDown = null;
@@ -23,9 +21,9 @@ class SwipeTrack {
 
 
 
-  containsClassName (evntarget , classArr) {
+  containsClassName(evntarget, classArr) {
     for (var i = classArr.length - 1; i >= 0; i--) {
-      if( evntarget.classList.contains(classArr[i]) ) {
+      if (evntarget.classList.contains(classArr[i])) {
         return true;
       }
     }
@@ -34,29 +32,29 @@ class SwipeTrack {
   addEvents() {
     this.__trackElement.addEventListener('touchstart', this.handleTouchStart.bind(this), false);
     this.__trackElement.addEventListener('touchmove', this.handleTouchMove.bind(this), false);
-    this.__trackElement.addEventListener('touchend', this.handleTouchEnd.bind(this), false);    
+    this.__trackElement.addEventListener('touchend', this.handleTouchEnd.bind(this), false);
   }
 
 
   removeEvents() {
     this.__trackElement.removeEventListener('touchstart', this.handleTouchStart.bind(this), false);
     this.__trackElement.removeEventListener('touchmove', this.handleTouchMove.bind(this), false);
-    this.__trackElement.removeEventListener('touchend', this.handleTouchEnd.bind(this), false);   
+    this.__trackElement.removeEventListener('touchend', this.handleTouchEnd.bind(this), false);
   }
 
 
   handleTouchEnd() {
 
-    let timeDiff = Date.now() - this.__timeDown; 
+    let timeDiff = Date.now() - this.__timeDown;
     if (Math.abs(this.__xDiff) > Math.abs(this.__yDiff)) { /*most significant*/
       if (Math.abs(this.__xDiff) > this.__DIFF_TRASHOLD && timeDiff < this.__TIME_TRASHOLD) {
         if (this.__xDiff > 0) {
 
-            this.__leftSwipe()  /* left swipe */
+          this.__leftSwipe() /* left swipe */
 
         } else {
 
-            this.__rightSwipe() /* right swipe */
+          this.__rightSwipe() /* right swipe */
 
         }
       } else {
@@ -66,11 +64,11 @@ class SwipeTrack {
       if (Math.abs(this.__yDiff) > this.__DIFF_TRASHOLD && timeDiff < this.__TIME_TRASHOLD) {
         if (this.__yDiff > 0) {
 
-            this.__upSwipe() /* up swipe */
+          this.__upSwipe() /* up swipe */
 
         } else {
 
-            this.__downSwipe() /* down swipe */
+          this.__downSwipe() /* down swipe */
 
         }
       } else {
@@ -80,7 +78,7 @@ class SwipeTrack {
     /* reset values */
     this.__xDown = null;
     this.__yDown = null;
-    this.__timeDown = null; 
+    this.__timeDown = null;
   }
 
 
@@ -88,7 +86,7 @@ class SwipeTrack {
 
   handleTouchStart(evt) {
     let touchStartTarget = evt.target;
-    if( this.containsClassName(touchStartTarget, this.__swipeBlockClassName ) ) {
+    if (this.containsClassName(touchStartTarget, this.__swipeBlockClassName)) {
       return;
     }
     this.__timeDown = Date.now()
