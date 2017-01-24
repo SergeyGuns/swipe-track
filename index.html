@@ -1,0 +1,31 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>swipeTracker</title>
+</head>
+<body>
+
+<div id='text'></div> 
+
+<script type="text/javascript" src="./swipeTrack.js" ></script>
+<script type="text/javascript">
+  
+let text = window.text
+
+function handleLeft() {
+  text.innerHTML = '=>'
+}
+function handleRight () {
+  text.innerHTML = '<='
+}
+
+const OPTIONS = {
+  "left": handleLeft,
+  "right": handleRight
+}
+
+const swipeTrack = new SwipeTrack(OPTIONS)
+
+</script>
+</body>
+</html>
