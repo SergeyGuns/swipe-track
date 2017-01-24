@@ -1,5 +1,6 @@
 ```js
-	//how use
+
+###how use
 
 let text = window.text
 function handleLeft() {
@@ -24,6 +25,6 @@ or
 const swipeTrack = new SwipeTrack({
   "left": handleLeft,
   "right": handleRight,
-  
+  "element": document.querySelector('.block')
 })
 ```
