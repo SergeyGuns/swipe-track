@@ -111,5 +111,4 @@ class SwipeTrack {
     this.__yDiff = this.__yDown - yUp;
   }
 
-
 }
