@@ -1,6 +1,6 @@
+###how use
 ```js
 
-###how use
 
 let text = window.text
 function handleLeft() {
