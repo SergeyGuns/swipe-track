@@ -113,5 +113,21 @@ class SwipeTrack {
     this.__yDiff = this.__yDown - yUp;
   }
 
+  swipe(direction = 'left') {
+    switch (direction) {
+      case 'right':
+        this.__rightSwipe();
+        break;
+      case 'left': // if (x === 'value2')
+        this.__leftSwipe();
+        break;
+      case 'up':
+        this.__upSwipe();
+        break;
+      case 'down':
+        this.__downSwipe();
+        break;
+    }
+  }
 
 }
