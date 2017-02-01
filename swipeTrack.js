@@ -13,12 +13,12 @@
 class SwipeTrack {
   constructor(options = {}) {
     this.__debug               = options.debug || false                 // bool
-    this.__leftSwipe           = options.left || console.log('left')    //func
-    this.__rightSwipe          = options.right || console.log('right')  //func
-    this.__upSwipe             = options.up || console.log('up')        //func
-    this.__downSwipe           = options.down || console.log('down')    //func
+    this.__leftSwipe           = options.left ||( ()=>console.log('left') )   //func
+    this.__rightSwipe          = options.right ||( ()=>console.log('right') ) //func
+    this.__upSwipe             = options.up ||( ()=>console.log('up') )       //func
+    this.__downSwipe           = options.down ||( ()=>console.log('down') )   //func
     this.__trackElement        = options.element || document            //htmlNode
-    this.__swipeBlockClassName = options.swipeBlockers || 'swipe__block' // array ['block' , swipeBlock]
+    this.__swipeBlockClassName = options.swipeBlockers || ['swipe__block'] // array ['block' , swipeBlock]
     this.__blockBy             = options.blockBy || 'exact' // or 'closest'
     this.__xDown               = null;
     this.__yDown               = null;
