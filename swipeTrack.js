@@ -118,7 +118,7 @@ class SwipeTrack {
       case 'right':
         this.__rightSwipe();
         break;
-      case 'left': // if (x === 'value2')
+      case 'left':
         this.__leftSwipe();
         break;
       case 'up':
