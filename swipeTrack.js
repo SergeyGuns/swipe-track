@@ -19,7 +19,7 @@ class SwipeTrack {
     this.__downSwipe           = options.down ||( ()=>console.log('down') )   //func
     this.__trackElement        = options.element || document            //htmlNode
     this.__swipeBlockClassName = options.swipeBlockers || ['swipe__block'] // array ['block' , swipeBlock]
-    this.__blockBy             = options.blockBy || 'exact' // or 'closest'
+    this.__blockBy             = options.blockBy || 'closest' // or 'exact'
     this.__xDown               = null;
     this.__yDown               = null;
     this.__xDiff               = null;
