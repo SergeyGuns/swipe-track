@@ -8,7 +8,7 @@ function handleLeft() {
   text.innerHTML = '<='
 }
 function handleLeft2() {
-  text.innerHTML = ',,i,,'
+  text.innerHTML = :+1:
 }
 function handleRight () {
   text.innerHTML = '=>'
